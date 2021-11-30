@@ -22,7 +22,7 @@
   try{
     $sql = "SELECT * FROM user WHERE id = :id";
     $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(':id', '%'.$id.'%', PDO::PARAM_INT);
+    $stmt->bindValue(':id', $edit, PDO::PARAM_INT);
 
     $stmt->execute();
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -55,12 +55,12 @@
             <div class="col-sm-8 col-sm-offset-2">
                 <div class="form-group">
                     <label for="name"><span class="required">お名前</span> </label>
-                    <input type="text" id="name" name="name" class="form-control" value="<?php echo $row[name] ?>">
+                    <input type="text" id="name" name="name" class="form-control" value="<?php echo $row['name'];?>">
 
                 </div>
                 <div class="form-group">
                     <label for="email"><span class="required">メールアドレス</span> </label>
-                    <input type="text" id="email" name="email" class="form-control" value="<?php echo $row[email] ?>">
+                    <input type="text" id="email" name="email" class="form-control" value="<?php echo $row['email'];?>">
 
                 </div>
                 <div class="form-group">
@@ -69,8 +69,8 @@
                     <?php
                           echo "<label class='radio-inline'>";
                           echo "    <input type='radio' name='gender' value='1' required";
-                          if( $row[gender] === 1 ) {
-                            echo "checked>男性";
+                          if( $row['gender'] === 1 ) {
+                            echo " checked>男性";
 
                           } else {
                           	 echo ">男性";
@@ -78,8 +78,8 @@
                           echo "</label>";
                           echo "<label class='radio-inline'>";
                           echo "    <input type='radio' name='gender' value='2' required";
-                          if( $row[gender] === 2 ) {
-                            echo "checked>女性";
+                          if( $row['gender'] === 2 ) {
+                            echo " checked>女性";
 　　　　　　　　　　　　　　　　
 
                           } else {
@@ -88,8 +88,8 @@
                           echo "</label>";
                           echo "<label class='radio-inline'>";
                           echo "    <input type='radio' name='gender' value='9' required";
-                          if( $row[gender] === 9 ) {
-                            echo "checked>その他";
+                          if( $row['gender'] === 9 ) {
+                            echo " checked>その他";
 
                           } else {
                           	 echo ">その他";
