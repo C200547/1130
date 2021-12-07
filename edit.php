@@ -22,7 +22,7 @@
   try{
     $sql = "SELECT * FROM user WHERE id = :id";
     $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(':id', $edit, PDO::PARAM_INT);
+    $stmt->bindValue(':id', $edit, PDO::PARAM_STR);
 
     $stmt->execute();
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -55,12 +55,12 @@
             <div class="col-sm-8 col-sm-offset-2">
                 <div class="form-group">
                     <label for="name"><span class="required">お名前</span> </label>
-                    <input type="text" id="name" name="name" class="form-control" value="<?php echo $row['name'];?>">
+                    <input type="text" id="name" name="name" class="form-control" value="<?php echo $row['name'];?>" required>
 
                 </div>
                 <div class="form-group">
                     <label for="email"><span class="required">メールアドレス</span> </label>
-                    <input type="text" id="email" name="email" class="form-control" value="<?php echo $row['email'];?>">
+                    <input type="text" id="email" name="email" class="form-control" value="<?php echo $row['email'];?>" required>
 
                 </div>
                 <div class="form-group">
